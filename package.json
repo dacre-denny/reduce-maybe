@@ -1,0 +1,31 @@
+{
+  "author": "Dacre",
+  "description": "A small TypeScript utility for reducing iterable values with an accumulator callback.",
+  "devDependencies": {
+    "@types/jest": "27.0.0",
+    "jest": "27.0.0",
+    "ts-jest": "27.1.5",
+    "typescript": "^4.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "keywords": [
+    "reduce",
+    "iterable",
+    "fold",
+    "accumulator",
+    "typescript",
+    "utility"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "reduce",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "watch": "jest --watch --verbose"
+  },
+  "version": "1.0.0"
+}
