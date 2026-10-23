@@ -1,9 +1,9 @@
-# Reduce
+# reduce-maybe
 
 `Reduce` is a small TypeScript utility for folding an iterable into an accumulated value. Its callback can return `undefined` to keep the current accumulator, so a branch can exit early without returning the accumulator explicitly.
 
 ```ts
-import { Reduce } from "reduce";
+import { Reduce } from "reduce-maybe";
 
 const total = Reduce(
 	[3, -1, 4],

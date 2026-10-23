@@ -21,11 +21,17 @@
   ],
   "license": "MIT",
   "main": "dist/index.js",
-  "name": "reduce",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dacre-denny/reduce-maybe.git"
+  },
+  "name": "reduce-maybe",
   "scripts": {
     "build": "tsc",
+    "prepublishOnly": "npm test && npm run build && npm version patch --no-git-tag-version",
+    "publish:package": "npm publish",
     "test": "jest",
     "watch": "jest --watch --verbose"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
