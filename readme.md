@@ -1,51 +1,45 @@
-# reduce yield
+# Reduce
 
-const result = reduceMap([...], function* (item) {
+`Reduce` is a small TypeScript utility for folding an iterable into an accumulated value. Its callback can return `undefined` to keep the current accumulator, so a branch can exit early without returning the accumulator explicitly.
 
-yield [item.id, item]
-})
+```ts
+import { Reduce } from "reduce";
 
-const result = reduceArray([...], function* (item) {
+const total = Reduce(
+	[3, -1, 4],
+	(sum, value) => {
+		if (value < 0) return;
+		return sum + value;
+	},
+	0,
+);
 
-yield item
-})
+console.log(total); // 7
+```
 
-## better idea?
+Returning `undefined` skips an accumulator update for that item. It does **not** stop the iteration; the callback still runs for each remaining item.
 
-reduce((push, item) => {
+## API
 
-if(false) {
-return
-}
+```ts
+Reduce<T, R>(
+	input: Iterable<T>,
+	callback: (accumulator: R, item: T, index: number) => R | undefined,
+	initial: R,
+): R
+```
 
-if(thing) {
-return false
-}
+- Items are visited in iterable order.
+- `index` starts at `0` and increments for every item, including items whose callback returns `undefined`.
+- A returned value other than `undefined` becomes the accumulator for the next item. Values such as `false`, `0`, and `null` are valid accumulator results.
+- An empty iterable returns `initial` without calling the callback.
 
-push(item)
+`input` can be any JavaScript iterable, including arrays, sets, and generator functions.
 
-if(other) {
-push(item)
-}
+## Development
 
-} , [])
-
---
-
-reduce((set, item) => {
-
-if(false) {
-return // allow early exit without return type
-}
-
-if(thing) {
-return false
-}
-
-push('y', item)
-
-if(other) {
-set('x', item)
-}
-
-} , {})
+```sh
+npm install
+npm test
+npm run build
+```
