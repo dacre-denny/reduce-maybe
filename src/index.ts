@@ -1,0 +1,1 @@
+export { Reduce } from "./lib";
